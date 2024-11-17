@@ -1,5 +1,14 @@
 import java.net.URI
 
+include(":domain")
+
+
+include(":data")
+
+
+include(":data")
+
+
 pluginManagement {
     repositories {
         google {
@@ -21,6 +30,7 @@ dependencyResolutionManagement {
         maven {
             this.url = URI("https://jitpack.io")
         }
+        maven { url = URI("https://maven.google.com") }
     }
 }
 

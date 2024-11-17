@@ -1,6 +1,5 @@
 package com.example.teammanger.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -9,6 +8,7 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
@@ -40,6 +40,15 @@ fun TeamMangerTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
+    if (darkTheme) {
+        blackOrWhite = Color.White
+        unSelectedNavigationColor = Color.White
+        selectedNavigationColor = Color(0xffFED36A)
+    } else {
+        blackOrWhite = Color.Black
+        selectedNavigationColor = Color.DarkGray
+        unSelectedNavigationColor = Color(0xff617D8A)
+    }
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current

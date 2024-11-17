@@ -32,14 +32,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
 }
 
@@ -61,28 +64,17 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.compose.material3.material3)
-    //Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.okhttp)
-    implementation(libs.logging.interceptor)
-    implementation(libs.converter.gson)
-
-    // Room
-    implementation(libs.androidx.room.runtime)
-    ksp(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx)
 
     // Dagger - Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
-// coil
+    // coil
     implementation(libs.coil.compose)
 
     //swipe refresh
     implementation(libs.accompanist.swiperefresh)
     // ViewModel
-    val lifecycleVersion = "2.6.1"
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.sdp.compose)
     // exposed DropDown
@@ -102,11 +94,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.testing)
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.androidx.core.testing)
-    // ktor client for webSocket
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.cio)
-    implementation(libs.ktor.client.serialization)
-    implementation(libs.ktor.client.websockets)
-    implementation(libs.ktor.client.logging)
-    implementation(libs.ktor.client.content.negotiation)
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(libs.androidx.work.runtime.ktx)
 }
